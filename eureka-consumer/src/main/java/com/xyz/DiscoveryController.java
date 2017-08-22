@@ -24,7 +24,7 @@ public class DiscoveryController {
 
     @GetMapping("/consumer")
     public String dc() {
-        ServiceInstance serviceInstance = loadBalancerClient.choose("eureka-client");
+        ServiceInstance serviceInstance = loadBalancerClient.choose("hello-service");
         String url = "http://" + serviceInstance.getHost() + ":" + serviceInstance.getPort() + "/dc";
         System.out.println("url:" + url + " uri:" + serviceInstance.getUri().toString());
 
