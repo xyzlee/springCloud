@@ -20,7 +20,9 @@ public class DiscoveryController {
     @GetMapping("/dc")
     public String dc() {
         String services = "services: " + discoveryClient.getServices();
-        return services;
+        ServiceInstance si = discoveryClient.getLocalServiceInstance();
+        String my = "uri:" + si.getUri().toString() + " serviceId:" + si.getServiceId();
+        return services + "\n" + "my:" + my;
     }
     @GetMapping("/hello")
     public List<ServiceInstance> hello() {
